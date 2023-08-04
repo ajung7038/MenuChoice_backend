@@ -1,0 +1,22 @@
+const express = require("express");
+const bodyPaser = require("body-parser");
+
+const app = express();
+
+// parse requests of content-type: application/json
+app.use(bodyPaser.json());
+
+// parse requests of content-type: application/x-www-from-urlencoded
+app.use(bodyPaser.urlencoded({ extended: true }));
+
+//simple route
+app.get("/", (req, res) => {
+  res.json({ test: "success!" });
+});
+
+require("./routes/store.js")(app);
+
+//set port, listen for requests
+app.listen(5000, () => {
+  console.log("Server is running on port 5000");
+});
