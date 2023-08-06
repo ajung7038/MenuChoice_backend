@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyPaser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
 
@@ -8,6 +9,7 @@ app.use(bodyPaser.json());
 
 // parse requests of content-type: application/x-www-from-urlencoded
 app.use(bodyPaser.urlencoded({ extended: true }));
+app.use(cors());
 
 //simple route
 app.get("/", (req, res) => {
